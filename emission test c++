@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int pollutant;
+    double gramsPerMile, odometer, permitted = 0;
+
+    cout << "Enter pollutant number (1=CO, 2=Hydrocarbons, 3=NOx, 4=Nonmethane HC): ";
+    cin >> pollutant;
+    cout << "Enter grams emitted per mile: ";
+    cin >> gramsPerMile;
+    cout << "Enter odometer reading: ";
+    cin >> odometer;
+
+    switch (pollutant) {
+        case 1:
+            if (odometer <= 50000) permitted = 3.4;
+            else permitted = 4.2;
+            break;
+        case 2:
+            if (odometer <= 50000) permitted = 0.31;
+            else permitted = 0.39;
+            break;
+        case 3:
+            if (odometer <= 50000) permitted = 0.4;
+            else permitted = 0.5;
+            break;
+        case 4:
+            if (odometer <= 50000) permitted = 0.25;
+            else permitted = 0.31;
+            break;
+        default:
+            cout << "Invalid pollutant number!" << endl;
+            return 0;
+    }
+
+    if (gramsPerMile > permitted)
+        cout << "Emissions exceed permitted level of " << permitted << " grams/mile." << endl;
+    else
+        cout << "Emissions are within permitted level of " << permitted << " grams/mile." << endl;
+
+    return 0;
+}
