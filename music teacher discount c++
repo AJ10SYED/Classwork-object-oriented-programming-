@@ -1,0 +1,43 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    double purchase, discount = 0, discountedTotal, salesTax, total;
+    char isTeacher;
+
+    cout << "Enter total purchases: $";
+    cin >> purchase;
+    cout << "Is the purchaser a teacher? (y/n): ";
+    cin >> isTeacher;
+
+    if (isTeacher == 'y' || isTeacher == 'Y') {
+        if (purchase >= 100)
+            discount = 0.12 * purchase;
+        else
+            discount = 0.10 * purchase;
+        
+        discountedTotal = purchase - discount;
+        salesTax = 0.05 * discountedTotal;
+        total = discountedTotal + salesTax;
+
+        cout << fixed << setprecision(2);
+        cout << "\n(For Teacher)\n";
+        cout << "Total purchases      $" << purchase << endl;
+        cout << "Teacher's discount   $" << discount << endl;
+        cout << "Discounted total     $" << discountedTotal << endl;
+        cout << "Sales tax (5%)       $" << salesTax << endl;
+        cout << "Total                $" << total << endl;
+    } else {
+        salesTax = 0.05 * purchase;
+        total = purchase + salesTax;
+
+        cout << fixed << setprecision(2);
+        cout << "\n(For Non-teacher)\n";
+        cout << "Total purchases      $" << purchase << endl;
+        cout << "Sales tax (5%)       $" << salesTax << endl;
+        cout << "Total                $" << total << endl;
+    }
+
+    return 0;
+}
